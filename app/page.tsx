@@ -3,6 +3,23 @@ import React, { useState, useEffect, useRef } from 'react';
 import HanziWriter from 'hanzi-writer';
 import { parseSync } from 'subtitle';
 
+declare global {
+  interface Window {
+    onYouTubeIframeAPIReady?: () => void;
+    YT?: {
+      Player: any;
+      PlayerState: {
+        UNSTARTED: number;
+        ENDED: number;
+        PLAYING: number;
+        PAUSED: number;
+        BUFFERING: number;
+        CUED: number;
+      };
+    };
+  }
+}
+
 const YOUTUBE_VIDEO_ID = "IU4Sw07L9PU";
 
 export default function Home() {
