@@ -1,0 +1,12 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Học Tiếng Trung, Tại Sao Phải Học Cả Văn Hóa? | HSK 2 - 3",
+      "youtube_url": "https://www.youtube.com/watch?v=tmC-p1M-3Fc&list=PLDLzsRbsaxH3xktvi8JGbhuFNwEygjIKj&index=5",
+      "transcript_file": "transcript.txt",
+      "added_date": "2026-04-24"
+    }
+  ],
+  "next_id": 2
+}
