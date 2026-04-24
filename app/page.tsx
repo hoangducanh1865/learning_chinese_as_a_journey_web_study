@@ -3,23 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import HanziWriter from 'hanzi-writer';
 import { parseSync } from 'subtitle';
 
-declare global {
-  interface Window {
-    onYouTubeIframeAPIReady?: () => void;
-    YT?: {
-      Player: any;
-      PlayerState: {
-        UNSTARTED: number;
-        ENDED: number;
-        PLAYING: number;
-        PAUSED: number;
-        BUFFERING: number;
-        CUED: number;
-      };
-    };
-  }
-}
-
 const YOUTUBE_VIDEO_ID = "IU4Sw07L9PU";
 
 export default function Home() {
@@ -52,13 +35,13 @@ export default function Home() {
 
     // Setup player tracking
     let player: any;
-    window.onYouTubeIframeAPIReady = () => {
+    (window as any).onYouTubeIframeAPIReady = () => {
       const iframe = document.getElementById('youtube-player') as HTMLIFrameElement;
       if (iframe) {
-        player = new window.YT!.Player('youtube-player', {
+        player = new (window as any).YT.Player('youtube-player', {
           events: {
             'onStateChange': (event: any) => {
-              if (event.data === window.YT!.PlayerState.PLAYING) {
+              if (event.data === (window as any).YT.PlayerState.PLAYING) {
                 const interval = setInterval(() => {
                   if (player?.getCurrentTime) {
                     setCurrentTime(player.getCurrentTime() * 1000);
@@ -73,7 +56,7 @@ export default function Home() {
     };
 
     return () => {
-      delete window.onYouTubeIframeAPIReady;
+      delete (window as any).onYouTubeIframeAPIReady;
     };
   }, []);
 
