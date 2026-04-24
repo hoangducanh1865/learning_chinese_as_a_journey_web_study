@@ -38,10 +38,10 @@ export default function Home() {
     window.onYouTubeIframeAPIReady = () => {
       const iframe = document.getElementById('youtube-player') as HTMLIFrameElement;
       if (iframe) {
-        player = new (window as any).YT.Player('youtube-player', {
+        player = new window.YT!.Player('youtube-player', {
           events: {
             'onStateChange': (event: any) => {
-              if (event.data === (window as any).YT.PlayerState.PLAYING) {
+              if (event.data === window.YT!.PlayerState.PLAYING) {
                 const interval = setInterval(() => {
                   if (player?.getCurrentTime) {
                     setCurrentTime(player.getCurrentTime() * 1000);
@@ -56,7 +56,7 @@ export default function Home() {
     };
 
     return () => {
-      delete (window as any).onYouTubeIframeAPIReady;
+      delete window.onYouTubeIframeAPIReady;
     };
   }, []);
 
