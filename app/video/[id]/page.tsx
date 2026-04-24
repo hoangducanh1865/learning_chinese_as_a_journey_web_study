@@ -49,7 +49,7 @@ export default function VideoPage() {
     firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
 
     let player: any;
-    window.onYouTubeIframeAPIReady = () => {
+    (window as any).onYouTubeIframeAPIReady = () => {
       const iframe = document.getElementById('youtube-player') as HTMLIFrameElement;
       if (iframe) {
         player = new (window as any).YT.Player('youtube-player', {
