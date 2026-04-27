@@ -167,7 +167,8 @@ export default function VideoPage() {
                 allowFullScreen
               />
             </div>
-            <div className="bg-white p-6 rounded-xl shadow border min-h-[100px] flex items-center justify-center">
+            <div className="bg-white p-6 rounded-xl shadow border min-h-[100px] flex flex-col items-center justify-center">
+              <div className="text-sm text-slate-500 mb-2">Ấn vào từ để hiển thị nghĩa</div>
               <div className="text-4xl flex flex-wrap justify-center gap-2">
                 {currentSub ? currentSub.split('').map((char, i) => (
                   <span key={i} onClick={() => lookupWord(char)} className="cursor-pointer hover:text-red-600 px-2">{char}</span>
